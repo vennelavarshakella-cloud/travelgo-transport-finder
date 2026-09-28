@@ -10,7 +10,8 @@ import {
   Plane, 
   Car, 
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  Bot
 } from 'lucide-react';
 import { SearchQuery, TransportType } from '../types/transport';
 import { POPULAR_CITIES, POPULAR_ROUTES } from '../data/mockTransport';
@@ -75,10 +76,22 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({ onSearch, initialQuery }
       <div className="absolute top-1/2 right-1/3 w-60 h-60 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-5xl mx-auto text-center mb-8 sm:mb-10">
-        {/* Subtle top indicator */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-cyan-200 mb-4 shadow-sm animate-fade-in">
-          <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-          <span>India’s Unified Smart Travel Search Engine</span>
+        {/* Top Badges & Chat Trigger */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-cyan-200 shadow-sm animate-fade-in">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <span>India’s Unified Smart Travel Search Engine</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-travelgo-chat'))}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-purple-500/40 via-blue-500/40 to-cyan-500/40 hover:from-purple-500/60 hover:to-cyan-500/60 backdrop-blur-md border border-cyan-400/40 text-xs font-bold text-cyan-100 shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          >
+            <Bot className="w-4 h-4 text-cyan-300" />
+            <span>Chat with n8n AI</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          </button>
         </div>
 
         {/* Hero Title */}

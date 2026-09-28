@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Train, Bus, Plane, Car, User, Ticket, Menu, X } from 'lucide-react';
+import { Compass, Train, Bus, Plane, Car, User, Ticket, Menu, X, Bot, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: 'home' | 'search' | 'bookings' | 'about';
@@ -20,6 +20,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleNavClick = (tab: 'home' | 'search' | 'bookings' | 'about') => {
     setActiveTab(tab);
+    setMobileMenuOpen(false);
+  };
+
+  const handleOpenChat = () => {
+    window.dispatchEvent(new CustomEvent('open-travelgo-chat'));
     setMobileMenuOpen(false);
   };
 
@@ -101,8 +106,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </nav>
 
-          {/* Right Action: User profile button (Zone 3) */}
+          {/* Right Action: Ask AI button + User profile button (Zone 3) */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Ask n8n AI Button */}
+            <button
+              onClick={handleOpenChat}
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 rounded-xl shadow-xs hover:shadow-md transition-all cursor-pointer active:scale-95 border border-purple-400/40"
+              title="Chat with TravelGo n8n AI Assistant"
+            >
+              <Bot className="w-4 h-4 text-cyan-200" />
+              <span className="hidden sm:inline">Ask AI</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            </button>
+
             <button
               onClick={onOpenProfile}
               className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-semibold text-slate-700 hover:text-purple-700 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition-all cursor-pointer shadow-xs active:scale-95"
@@ -169,8 +185,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             ℹ️ About TravelGo
           </button>
+          <button
+            onClick={handleOpenChat}
+            className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold text-purple-700 bg-purple-50 flex items-center justify-between"
+          >
+            <span className="flex items-center gap-2">
+              <Bot className="w-4 h-4 text-purple-600" />
+              Ask n8n AI Chatbot
+            </span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          </button>
         </div>
       )}
     </header>
   );
 };
+

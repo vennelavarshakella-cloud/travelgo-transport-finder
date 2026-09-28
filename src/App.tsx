@@ -14,6 +14,7 @@ import { TicketPassModal } from './components/TicketPassModal';
 import { MyBookingsView } from './components/MyBookingsView';
 import { AboutView } from './components/AboutView';
 import { ProfileModal } from './components/ProfileModal';
+import { ChatbotWidget } from './components/ChatbotWidget';
 import { generateTransportData } from './data/mockTransport';
 import { 
   TransportItem, 
@@ -578,6 +579,9 @@ export default function App() {
           onGoToBookings={() => setActiveTab('bookings')}
         />
       )}
+
+      {/* Floating n8n AI Chatbot Widget */}
+      <ChatbotWidget />
 
     </div>
   );
