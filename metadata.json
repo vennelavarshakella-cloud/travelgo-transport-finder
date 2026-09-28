@@ -1,0 +1,6 @@
+{
+  "name": "TravelGo - Transport Search & Booking",
+  "description": "Find, compare, and book trains, buses, flights, and cabs between destinations with instant fare comparison, live seat availability, and easy checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
